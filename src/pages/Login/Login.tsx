@@ -1,12 +1,13 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Navigate } from "react-router-dom";
 import { Form } from "../../components/Form/Form";
-import { useAppDispatch, useAppSelector } from '../../hooks/actions';
+import { useAppDispatch } from '../../hooks/actions';
+import { useAuth } from "../../hooks/auth";
 import { authActions } from "../../reducers/auth/authSlice";
 
 export const Login = () => {
     const dispatch = useAppDispatch();
-    const {isAuth} = useAppSelector(state => state.user)
+    const {isAuth} = useAuth()
 
     const handleLogin = (email: string, password: string)  => {
         const auth = getAuth();

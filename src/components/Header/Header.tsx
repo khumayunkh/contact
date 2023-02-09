@@ -1,11 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useAppSelector } from "../../hooks/actions";
+import { useAuth } from "../../hooks/auth";
 import style from './Header.module.sass'
 
 
 function Header(){
-    const {token} = useAppSelector(state => state.user)
+    const {isAuth} = useAuth()
 
     return(
         <>
@@ -15,7 +16,7 @@ function Header(){
                     <h1>Logo</h1>
                 </div>
                 <div className={style.profile}>
-                    {token == null ? 
+                    {!isAuth ? 
                     <>
                         <NavLink className={style.btn} to='/login'>Login</NavLink>
                         <NavLink className={style.signup} to='/sign-up'>SignUp</NavLink>
