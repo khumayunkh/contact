@@ -1,14 +1,14 @@
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Form } from "../../components/Form/Form";
 import { useAppDispatch } from '../../hooks/actions';
 import { setUser } from "../../reducers/authSlice";
 
-export const Login = () => {
+export const SignUp = () => {
     const dispatch = useAppDispatch();
 
-    const handleLogin = (email: string, password: string)  => {
+    const handleRegister = (email: string, password: string)  => {
         const auth = getAuth();
-        signInWithEmailAndPassword(auth, email, password)
+        createUserWithEmailAndPassword(auth, email, password)
             .then(({user}) => {
                 console.log(user);
                 dispatch(setUser({
@@ -20,12 +20,13 @@ export const Login = () => {
             .catch(console.error)
     }
 
+
     return (
         <>
          <Form
-            title="Login"
-            handleClick={handleLogin}
-            name='sign-up'
+            title="SignUp"
+            handleClick={handleRegister}
+            name='login'
         />    
         </>
     )

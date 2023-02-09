@@ -1,0 +1,47 @@
+.container
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 100%
+    height: 100vh
+    background-color: rgb(150, 37, 37)
+    // background-image: url('https://img.freepik.com/premium-vector/fashion-sales-clothing-shop-illustration-man-woman-customer-characters-using-discount-special-offers-buyer-people-buying-new-clothes-fashion-store-shopping-mall-background_213110-632.jpg?w=2000')
+    // background-repeat: no-repeat
+    // background-size: cover
+    .content
+        border-radius: 10px
+        padding: 5rem
+        background-color: rgb(255, 255, 255, 0.8)
+        display: flex
+        flex-direction: column
+        gap: 2rem
+        align-items: flex-start
+        justify-content: center
+        .form
+            display: flex
+            flex-direction: column
+            gap: 2rem
+            width: 30rem
+            input
+                border: 2px solid rgb(208,208,208) 
+                background-color: white
+                padding-left: 1rem
+                border-radius: 5px
+                height: 3rem   
+                &:focus
+                    outline: none
+                    border: 2px solid rgb(208,208,208)
+                    background-color: white  
+                &:checked
+                    background-color: white 
+            .btn
+                background-color: rgb(150, 37, 37)
+                border-radius: 10px
+                color: white
+                border: none
+                height: 3rem
+                width: 30rem
+            .navigate_btn
+                text-decoration: none
+                text-align: center  
+                font-size: 1.5rem
