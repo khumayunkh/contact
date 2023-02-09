@@ -1,12 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useAppSelector } from "../../hooks/actions";
+import { useAppDispatch, useAppSelector } from "../../hooks/actions";
 import { useAuth } from "../../hooks/auth";
+import { authActions } from "../../reducers/auth/authSlice";
 import style from './Header.module.sass'
 
 
 function Header(){
-    const {isAuth} = useAuth()
+    const dispatch = useAppDispatch()
+    const { isAuth, email } = useAuth()
 
     return(
         <>
@@ -22,7 +24,10 @@ function Header(){
                         <NavLink className={style.signup} to='/sign-up'>SignUp</NavLink>
                     </> : 
                     <>
-                        <button className={style.btn}>LogOut</button>
+                        <h5>{email}</h5>
+                        <button 
+                            onClick={() => dispatch(authActions.removeUser())}
+                            className={style.btn}>LogOut</button>
                     </>}    
                 </div>
             </div>
