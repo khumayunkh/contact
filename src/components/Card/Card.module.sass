@@ -1,0 +1,41 @@
+.card
+    position: relative
+    padding: 2rem
+    display: flex
+    justify-content: start
+    align-items: flex-start
+    height: 15rem
+    width: 30rem
+    gap: 2rem
+    border-radius: 1rem
+    background-color: rgb(232,232,232, .5)
+    transition: all .4s
+    &:hover
+        transform: scale(1.2)
+    .user
+        position: relative
+        .back
+            z-index: 1
+            height: 3rem
+            width: 3rem
+            position: absolute
+            border-radius: 50%
+            background-color: rgb(150, 37, 37)
+        .name
+            display: flex
+            justify-content: center
+            align-items: center
+            width: 3rem
+            height: 3rem
+            position: relative
+            color: white
+            z-index: 2  
+    .delete
+        right: 5%
+        bottom: 5%
+        border-radius: 5px
+        color: white
+        position: absolute
+        border: none
+        background-color: red
+        padding: .4rem 1rem     
