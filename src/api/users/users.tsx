@@ -1,7 +1,6 @@
 import { client } from ".."
 import { IUser } from "./interfasec"
 
-
 export const getUsers = async() => {
     return await client.get('users.json')
 }

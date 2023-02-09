@@ -6,3 +6,9 @@ export interface IUser{
     email: string
     category: string
 }
+
+export interface IUserState {
+    userIsLoading: boolean
+    userErrorMessage?: string
+    users?: IUser[]
+}
