@@ -1,4 +1,5 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { client } from "../../api";
 import { Form } from "../../components/Form/Form";
 import { useAppDispatch } from '../../hooks/actions';
 import { setUser } from "../../reducers/authSlice";
@@ -17,16 +18,14 @@ export const Login = () => {
                     token: user.refreshToken,
                 }));
             })
-            .catch(console.error)
+            .catch(console.error)    
     }
-
+    
     return (
-        <>
-         <Form
+        <Form
             title="Login"
             handleClick={handleLogin}
             name='sign-up'
-        />    
-        </>
+        /> 
     )
 }
