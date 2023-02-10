@@ -17,7 +17,10 @@ export const Card: React.FC<ICardProp> = ({users, query}) => {
         { users?.filter(item => {
             if (query === '') {
               return item;
-            } else if (item.email.toLowerCase().includes(query.toLowerCase())) {
+            } else if (item.email.toLowerCase().includes(query.toLowerCase()) 
+                        || item.firstName.toLowerCase().includes(query.toLowerCase()) 
+                        || item.lastName.toLowerCase().includes(query.toLowerCase())
+                        || item.phoneNumber.toLowerCase().includes(query.toLowerCase())) {
               return item;
             }
         }).map(item => (
