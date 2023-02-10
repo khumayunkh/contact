@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { IUser } from "../../api/users/interfasec";
+import { IUser, IUserCreate } from "../../api/users/interfasec";
 import { useAppDispatch } from "../../hooks/actions";
-import { createUserThunk } from "../../reducers/users/usersSlice";
+import { createUserThunk, getAllUsersThunk } from "../../reducers/users/usersSlice";
 import style from './PopUp.module.sass'
 
 
@@ -13,7 +13,7 @@ interface PopUpProps {
 
 export const PopUp: React.FC<PopUpProps>  = ({open, onClose}) => {
     const dispatch = useAppDispatch()
-    const {register, handleSubmit, reset} = useForm<IUser>()
+    const {register, handleSubmit, reset} = useForm<IUserCreate>()
     const [job, setJob] = useState(false)
     const [family, setFamily] = useState(false)
     
@@ -22,7 +22,7 @@ export const PopUp: React.FC<PopUpProps>  = ({open, onClose}) => {
     const email = register('email')
     const phoneNumber = register('phoneNumber')
     
-    const onSubmit = (data: IUser) =>{
+    const onSubmit = (data: IUserCreate) =>{
         dispatch(createUserThunk({
             firstName: data.firstName,
             lastName: data.lastName,
@@ -31,6 +31,7 @@ export const PopUp: React.FC<PopUpProps>  = ({open, onClose}) => {
             category: job ? 'Job' : 'Family'
         }))
         reset()
+        dispatch(getAllUsersThunk())
     }
 
     if (!open) return null;

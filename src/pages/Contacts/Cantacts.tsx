@@ -10,18 +10,18 @@ export const Contacts = () => {
     const {isAuth} = useAuth()
     const dispatch = useAppDispatch()
     const [moduleActive, setModuleActive] = useState(false) 
-    const user = useAppSelector(state => state.users.user)
+    const {user} = useAppSelector(state => state.users)
+
+    const users = []
 
     useEffect(() => {
         dispatch(getAllUsersThunk())
     },[])
 
-    const users = []
-
     for(let key in user){
         users.unshift(
             {
-                ...user[key],
+                ...user[key as any],
                 id: key
             }
         )

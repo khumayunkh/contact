@@ -1,5 +1,6 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Navigate } from "react-router-dom";
+import { client } from "../../api";
 import { Form } from "../../components/Form/Form";
 import { useAppDispatch } from '../../hooks/actions';
 import { useAuth } from "../../hooks/auth";

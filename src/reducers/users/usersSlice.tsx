@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
-import { IUser, IUserState } from '../../api/users/interfasec';
+import { IUser, IUserCreate, IUserState } from '../../api/users/interfasec';
 import { createUser, deleteUser, getUsers, updateUser } from '../../api/users/users';
 
 
@@ -20,7 +20,7 @@ export const getAllUsersThunk = createAsyncThunk(
 
 export const createUserThunk = createAsyncThunk(
     'createUserThunk',
-    async(data: IUser) => {
+    async(data: IUserCreate) => {
         const response = await createUser(data)
     }
 )
