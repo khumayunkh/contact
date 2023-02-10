@@ -15,7 +15,7 @@ export const createUser = async(data: IUserCreate) => {
 }
 
 export const updateUser = async(data: IUser) => {
-    return await client.put('users.json/',{ id : {data}})
+    return await client.put(`users/${data.id}.json/`, data)
 }
 
 export const deleteUser = async(id: any) => {

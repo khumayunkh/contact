@@ -1,5 +1,6 @@
 import { async } from '@firebase/util';
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
+import { Navigate } from 'react-router-dom';
 import { IUser, IUserCreate, IUserState } from '../../api/users/interfasec';
 import { createUser, deleteUser, getSingleUser, getUsers, updateUser } from '../../api/users/users';
 
@@ -43,7 +44,7 @@ export const updateUserThunk = createAsyncThunk(
 
 export const deleteUserThunk = createAsyncThunk(
     'deleteUser',
-    async(id: string, {dispatch}) => {
+    async(id: string | undefined) => {
         const response = await deleteUser(id)
     }
 )
