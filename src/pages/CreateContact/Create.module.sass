@@ -1,0 +1,72 @@
+.container
+    padding: 5%
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 100%
+    .content
+        display: flex
+        flex-direction: column
+        gap: 2rem
+        h2
+            color:  rgb(150, 37, 37)
+        .input
+            width: 40rem
+            height: 4rem
+            border: 2px solid rgb(150, 37, 37)
+            margin: 1%
+            border-radius: 5px
+            padding-left: 1rem
+            font-family: 1.6rem
+            font-size: 2rem
+            .input:focus 
+                outline: none    
+        .category
+            display: flex
+            justify-content: start
+            align-items: center
+            gap: 2rem    
+            .active
+                cursor: pointer
+                padding: .2rem 2rem
+                font-weight: 700
+                color: white
+                background-color: rgb(150, 37, 37)
+                border-radius: .5rem
+            .category_in
+                cursor: pointer
+                background-color: white 
+                color: rgb(150, 37, 37)
+                padding: 1rem 2rem
+                font-weight: 700    
+        .btns
+            width: 100%
+            justify-content: end
+            display: flex
+            gap: 1rem        
+        a
+            cursor: pointer
+            display: flex
+            justify-content: center
+            align-items: center
+            text-decoration: none
+            border-radius: 5px
+            color: white
+            border: none
+            padding: .4rem 1rem         
+        .delete
+            background-color: red 
+        .cancel
+            background-color: green 
+        .btn
+            cursor: pointer
+            display: flex
+            justify-content: center
+            align-items: center
+            text-decoration: none
+            padding: 1rem 2rem
+            border: none
+            color: white
+            font-weight: 700
+            background-color: rgb(150, 37, 37)
+            border-radius: .5rem           

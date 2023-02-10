@@ -1,18 +1,14 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { IUser, IUserCreate } from "../../api/users/interfasec";
+import { NavLink, useNavigate } from "react-router-dom";
+import { IUserCreate } from "../../api/users/interfasec";
 import { useAppDispatch } from "../../hooks/actions";
 import { createUserThunk, getAllUsersThunk } from "../../reducers/users/usersSlice";
-import style from './PopUp.module.sass'
+import style from './Create.module.sass'
 
-
-interface PopUpProps {
-    open: boolean,
-    onClose: () => void;
-}
-
-export const PopUp: React.FC<PopUpProps>  = ({open, onClose}) => {
+export const Create = () => {
     const dispatch = useAppDispatch()
+    const navigate = useNavigate()
     const {register, handleSubmit, reset} = useForm<IUserCreate>()
     const [job, setJob] = useState(false)
     const [family, setFamily] = useState(false)
@@ -31,27 +27,20 @@ export const PopUp: React.FC<PopUpProps>  = ({open, onClose}) => {
             category: job ? 'Job' : 'Family'
         }))
         reset()
-        dispatch(getAllUsersThunk())
+        navigate('/')
     }
-
-    if (!open) return null;
 
     return(
         <>
-        <div onClick={onClose} className={style.overlay}></div>
-        <div
-            onClick={(e) => {
-              e.stopPropagation();
-            }}
-            className={style.modalContainer}
-            >
-            <div className={style.modal_in}>
-                <form onSubmit={handleSubmit(onSubmit)} className={style.form}>
-                    <input {...firstName} className={style.input} placeholder="First Name"/>
-                    <input {...lastName} className={style.input} placeholder="Last Name"/>
-                    <input {...email} className={style.input} placeholder="Email"/>
-                    <input {...phoneNumber} className={style.input} placeholder="Phone Number"/>
-                    <div className={style.category}>
+        <div className={style.container}>
+            <form onSubmit={handleSubmit(onSubmit)} className={style.content}>
+                <h2>Create New Contact</h2>
+                <input className={style.input} {...firstName} placeholder='FirstName'/>
+                <input className={style.input} {...lastName} placeholder='LastName'/>
+                <input className={style.input} {...email} placeholder='Email'/>
+                <input className={style.input} {...phoneNumber} placeholder='PhoneNumber'/>
+                <div>
+                <div className={style.category}>
                         <div onClick={() => {setJob(!job); setFamily(false)}}>
                             <h4 className={job ? style.active : style.category_in}>Job</h4>
                         </div>
@@ -59,9 +48,12 @@ export const PopUp: React.FC<PopUpProps>  = ({open, onClose}) => {
                             <h4  className={family ? style.active : style.category_in}>Family</h4>
                         </div>
                     </div>
-                    <button className={style.btn}>Submit</button>
-                </form>
-            </div>
+                </div>
+                <div className={style.btns}>
+                    <NavLink className={style.cancel} to='/'>Cancel</NavLink>
+                    <button className={style.btn}>Save</button>
+                </div>
+            </form>
         </div>
         </>
     )

@@ -4,12 +4,11 @@ import { Card } from "../../components/Card/Card";
 import { useAuth } from "../../hooks/auth";
 import { useAppDispatch, useAppSelector } from "../../hooks/actions";
 import { getAllUsersThunk } from "../../reducers/users/usersSlice";
-import { PopUp } from "../../components/PopUp/PopUp";
+import { NavLink } from "react-router-dom";
 
 export const Contacts = () => {
     const {isAuth} = useAuth()
     const dispatch = useAppDispatch()
-    const [moduleActive, setModuleActive] = useState(false) 
     const user = useAppSelector(state => state.users.users)
 
     const users = []
@@ -34,16 +33,13 @@ export const Contacts = () => {
                 users={users}
             />
             {isAuth ? 
-                <div 
-                    onClick={() => setModuleActive(true)}
+                <NavLink to='/create'>
+                    <div 
                     className={style.add}>
                         +
-                </div> : null
+                    </div>
+                </NavLink> : null
             }
-            <PopUp
-                open={moduleActive}
-                onClose={() => setModuleActive(false)}
-            />
         </div>
         </>
     )

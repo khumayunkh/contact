@@ -5,6 +5,7 @@ import { SignUp } from './pages/SingUp/SingUp'
 import { Layout } from './routers/Layout'
 import { Contacts } from './pages/Contacts/Cantacts'
 import { Update } from './pages/UpdateContact/Update'
+import {Create} from './pages/CreateContact/Create'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Layout/>}>
           <Route index element={<Contacts/>}/>
+          <Route path='create' element={<Create/>}/>
           <Route path='/update/:id' element={<Update/>}/>
         </Route>
         <Route path='/login' element={<Login/>}/>

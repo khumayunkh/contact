@@ -19,7 +19,7 @@ export const SignUp = () => {
                     token: user.refreshToken,
                 }));
             })
-            .catch(console.error)
+            .catch( (e) => {(console.log(e))} )
     }
 
     if(isAuth){
