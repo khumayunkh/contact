@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { NavLink } from "react-router-dom";
+import { Navigate, NavLink, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { IUser, IUserCreate } from "../../api/users/interfasec";
 import { useAppDispatch, useAppSelector } from "../../hooks/actions";
@@ -8,6 +8,7 @@ import { deleteUserThunk, getSingleUserThunk, updateUserThunk } from "../../redu
 import style from './Update.module.sass'
 
 export const Update = () => {
+    const navigate = useNavigate()
     const {id} = useParams()
     const dispatch = useAppDispatch()
     const [job, setJob] = useState(false)
@@ -35,6 +36,7 @@ export const Update = () => {
             category: job ? 'Job' : 'Family'
         }))
         reset()
+        navigate('/')
     }
 
     return(
@@ -57,7 +59,7 @@ export const Update = () => {
                     </div>
                 </div>
                 <div className={style.btns}>
-                    <a onClick={() => dispatch(deleteUserThunk(id))} className={style.delete}>Delete Contact</a>
+                    <a onClick={() => {dispatch(deleteUserThunk(id)); navigate('/')}} className={style.delete}>Delete Contact</a>
                     <NavLink className={style.cancel} to='/'>Cancel</NavLink>
                     <button className={style.btn}>Save</button>
                 </div>
