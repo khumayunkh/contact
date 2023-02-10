@@ -32,7 +32,12 @@ export const Card: React.FC<ICardProp> = ({users}) => {
                    <p>email: {item.email}</p>
                    <p>category: {item.category}</p>
                 </div>
-                {isAuth ? <button onClick={() =>{ dispatch(deleteUserThunk(item.id)); removeItem(item.id)}} className={style.delete}>Delete</button> : null}
+                {isAuth ? 
+                    <>
+                        <button onClick={() =>{ dispatch(deleteUserThunk(item.id));}} className={style.delete}>Delete</button>
+                        <button></button>
+                    </>
+                : null}
             </div>
         ))}
         </>
