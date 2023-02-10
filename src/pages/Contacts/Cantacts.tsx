@@ -10,7 +10,7 @@ export const Contacts = () => {
     const {isAuth} = useAuth()
     const dispatch = useAppDispatch()
     const [moduleActive, setModuleActive] = useState(false) 
-    const {user} = useAppSelector(state => state.users)
+    const user = useAppSelector(state => state.users.users)
 
     const users = []
 

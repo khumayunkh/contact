@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import { IUser } from "../../api/users/interfasec";
 import { useAppDispatch } from "../../hooks/actions";
 import { useAuth } from "../../hooks/auth";
-import { deleteUserThunk, getAllUsersThunk } from "../../reducers/users/usersSlice";
+import { deleteUserThunk } from "../../reducers/users/usersSlice";
 import style from './Card.module.sass'
 
 interface ICardProp{
@@ -35,7 +36,7 @@ export const Card: React.FC<ICardProp> = ({users}) => {
                 {isAuth ? 
                     <>
                         <button onClick={() =>{ dispatch(deleteUserThunk(item.id));}} className={style.delete}>Delete</button>
-                        <button></button>
+                        <NavLink className={style.update} to={`/update/${item.id}`}>Update</NavLink>
                     </>
                 : null}
             </div>

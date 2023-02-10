@@ -1,6 +1,7 @@
+import { async } from '@firebase/util';
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
 import { IUser, IUserCreate, IUserState } from '../../api/users/interfasec';
-import { createUser, deleteUser, getUsers, updateUser } from '../../api/users/users';
+import { createUser, deleteUser, getSingleUser, getUsers, updateUser } from '../../api/users/users';
 
 
 // -------------------------------------- INITIAL STATE -----------------------------------------------------
@@ -15,6 +16,14 @@ export const getAllUsersThunk = createAsyncThunk(
     async(_, {dispatch}) => {
         const response = await getUsers()
         dispatch(usersActions.setUsers(response.data))
+    }
+)
+
+export const getSingleUserThunk = createAsyncThunk(
+    'getSingleUser',
+    async(id: string | undefined, {dispatch}) => {
+        const response = await getSingleUser(id)
+        dispatch(usersActions.setUser(response.data))
     }
 )
 
@@ -46,6 +55,9 @@ export const usersSlice = createSlice({
     initialState,
     reducers: {
         setUsers(state: IUserState, action: PayloadAction<IUser[]>){
+            state.users = action.payload
+        },
+        setUser(state: IUserState, action: PayloadAction<IUser>){
             state.user = action.payload
         }
     },

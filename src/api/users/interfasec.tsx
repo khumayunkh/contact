@@ -18,5 +18,6 @@ export interface IUserCreate{
 export interface IUserState {
     userIsLoading: boolean
     userErrorMessage?: string
-    user?: IUser[]
+    users?: IUser[]
+    user? : IUser
 }
