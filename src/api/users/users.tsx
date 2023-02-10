@@ -6,11 +6,12 @@ export const getUsers = async() => {
 }
 
 export const createUser = async(data: IUser) => {
-    return await client.post('users.json', data)
+    const {firstName, lastName, email, phoneNumber, category} = data
+    return await client.post('users.json/', data)
 }
 
 export const updateUser = async(data: IUser) => {
-    return await client.put('users.json',{ id : {data}})
+    return await client.put('users.json/',{ id : {data}})
 }
 
 export const deleteUser = async(id: any) => {

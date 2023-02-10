@@ -1,0 +1,74 @@
+.modalButton 
+    position: fixed
+    top: 40%
+    left: 50%
+    transform: translate(-50%, -50%)
+    z-index: -1
+    padding: 12px 24px
+
+
+.overlay 
+    background-color: rgba(0, 0, 0, 0)
+    position: fixed
+    width: 100vw
+    height: 100vh
+    opacity: 0.9
+
+
+.modalContainer 
+    max-width: 600px
+    width: 100%
+    position: fixed
+    top: 40%
+    left: 50%
+    transform: translate(-50%, -50%)
+    display: flex
+    background-color: #ffffff
+    box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.75)
+    border-radius: 8px
+    .modal_in 
+        width: 100%
+        min-height: 300px
+        .form
+            margin: 1%
+            height: 90%
+            display: flex
+            flex-direction: column
+            justify-content: center
+            align-items: center
+            gap: 2rem
+            .input
+                width: 80%
+                height: 28%
+                border: none
+                margin: 1%
+                font-size: 2rem
+            .input:focus 
+                outline: none
+            button
+                font-weight: 300
+                height: 8rem
+                width: 20rem
+                border-style: none
+                border-radius: 8px
+                background-color: rgb(150, 37, 37)  
+                color: white
+            .category
+                margin-left: -55%
+                display: flex
+                justify-content: start
+                align-items: center
+                gap: 2rem    
+                .active
+                    cursor: pointer
+                    padding: .2rem 2rem
+                    font-weight: 700
+                    color: white
+                    background-color: rgb(150, 37, 37)
+                    border-radius: .5rem
+                .category_in
+                    cursor: pointer
+                    background-color: white 
+                    color: rgb(150, 37, 37)
+                    padding: 1rem 2rem
+                    font-weight: 700
