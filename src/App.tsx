@@ -4,7 +4,7 @@ import { Login } from './pages/Login/Login'
 import { SignUp } from './pages/SingUp/SingUp'
 import { Layout } from './routers/Layout'
 import { Contacts } from './pages/Contacts/Cantacts'
-import { Update } from './pages/UpdateContact/Update'
+import { Edit } from './pages/EditContact/Edit'
 import {Create} from './pages/CreateContact/Create'
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
         <Route path='/' element={<Layout/>}>
           <Route index element={<Contacts/>}/>
           <Route path='create' element={<Create/>}/>
-          <Route path='/update/:id' element={<Update/>}/>
+          <Route path='/update/:id' element={<Edit/>}/>
         </Route>
         <Route path='/login' element={<Login/>}/>
         <Route path='/sign-up' element={<SignUp/>}/>

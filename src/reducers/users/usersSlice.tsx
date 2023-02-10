@@ -1,7 +1,7 @@
 import { async } from '@firebase/util';
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
 import { IUser, IUserCreate, IUserState } from '../../api/users/interfasec';
-import { createUser, deleteUser, getSingleUser, getUsers, updateUser } from '../../api/users/users';
+import { createUser, deleteUser, getSingleUser, getUsers, editUser } from '../../api/users/users';
 
 
 // -------------------------------------- INITIAL STATE -----------------------------------------------------
@@ -34,10 +34,10 @@ export const createUserThunk = createAsyncThunk(
     }
 )
 
-export const updateUserThunk = createAsyncThunk(
-    'updateUser',
+export const editUserThunk = createAsyncThunk(
+    'editUser',
     async(data: IUser) => {
-        const response = await updateUser(data)
+        const response = await editUser(data)
     }
 )
 
@@ -82,13 +82,13 @@ export const usersSlice = createSlice({
             state.userIsLoading = false
             state.userErrorMessage = action.error.message
         })
-        builder.addCase(updateUserThunk.pending, (state: IUserState) => {
+        builder.addCase(editUserThunk.pending, (state: IUserState) => {
             state.userIsLoading = true
         })
-        builder.addCase(updateUserThunk.fulfilled, (state: IUserState) => {
+        builder.addCase(editUserThunk.fulfilled, (state: IUserState) => {
             state.userIsLoading = false
         })
-        builder.addCase(updateUserThunk.rejected, (state: IUserState, action: any) => {
+        builder.addCase(editUserThunk.rejected, (state: IUserState, action: any) => {
             state.userIsLoading = false
             state.userErrorMessage = action.error.message
         })

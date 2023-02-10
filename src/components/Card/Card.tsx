@@ -38,7 +38,7 @@ export const Card: React.FC<ICardProp> = ({users, query}) => {
                 </div>
                 {isAuth ? 
                     <>
-                        <NavLink className={style.update} to={`/update/${item.id}`}>Update</NavLink>
+                        <NavLink className={style.update} to={`/update/${item.id}`}>Edit</NavLink>
                     </>
                 : null}
             </div>

@@ -4,10 +4,10 @@ import { Navigate, NavLink, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { IUser, IUserCreate } from "../../api/users/interfasec";
 import { useAppDispatch, useAppSelector } from "../../hooks/actions";
-import { deleteUserThunk, getSingleUserThunk, updateUserThunk } from "../../reducers/users/usersSlice";
-import style from './Update.module.sass'
+import { deleteUserThunk, getSingleUserThunk, editUserThunk } from "../../reducers/users/usersSlice";
+import style from './Edit.module.sass'
 
-export const Update = () => {
+export const Edit = () => {
     const navigate = useNavigate()
     const {id} = useParams()
     const dispatch = useAppDispatch()
@@ -27,7 +27,7 @@ export const Update = () => {
     const phoneNumber = register('phoneNumber')
     
     const onSubmit = (data: IUser) => {
-        dispatch(updateUserThunk({
+        dispatch(editUserThunk({
             id: id,
             firstName: data.firstName,
             lastName: data.lastName,
