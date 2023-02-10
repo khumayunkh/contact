@@ -6,14 +6,21 @@ import style from './Card.module.sass'
 
 interface ICardProp{
     users: IUser[]
+    query: string
 }
 
-export const Card: React.FC<ICardProp> = ({users}) => {
+export const Card: React.FC<ICardProp> = ({users, query}) => {
     const {isAuth} = useAuth()
 
     return(
         <>
-        {users?.map(item => (
+        { users?.filter(item => {
+            if (query === '') {
+              return item;
+            } else if (item.email.toLowerCase().includes(query.toLowerCase())) {
+              return item;
+            }
+        }).map(item => (
             <div key={item.id} className={style.card}>
                 <div className={style.user}>
                     <div className={style.back}></div>

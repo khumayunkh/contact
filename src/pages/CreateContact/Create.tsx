@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { NavLink, useNavigate } from "react-router-dom";
 import { IUserCreate } from "../../api/users/interfasec";
 import { useAppDispatch } from "../../hooks/actions";
-import { createUserThunk, getAllUsersThunk } from "../../reducers/users/usersSlice";
+import { createUserThunk } from "../../reducers/users/usersSlice";
 import style from './Create.module.sass'
 
 export const Create = () => {
