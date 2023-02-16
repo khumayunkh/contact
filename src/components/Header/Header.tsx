@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hooks/actions";
 import { useAuth } from "../../hooks/auth";
@@ -9,11 +9,12 @@ import style from './Header.module.sass'
 function Header(){
     const dispatch = useAppDispatch()
     const { isAuth, email } = useAuth()
+    const [active, setActive] = useState(true)
 
     return(
         <>
         <div className={style.container}>
-            <div className={style.content}>
+            <div className={active ? style.content : style.content_1}>
                 <div className={style.menu}>
                     <h1>Logo</h1>
                 </div>
